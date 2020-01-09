@@ -1,3 +1,3 @@
 <template>
-    <div>List of motifs</div>
+    <div class="q-pa-md">List of motifs</div>
 </template>

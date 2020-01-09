@@ -1,3 +1,3 @@
 <template>
-    <div>List of spectras</div>
+    <div class="q-pa-md">List of spectras</div>
 </template>

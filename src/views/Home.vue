@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="q-pa-md">
     <Summary v-bind:dataset="dataset"/>
   </div>
 </template>

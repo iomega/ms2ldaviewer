@@ -1,5 +1,5 @@
 <template>
-  <div class="pick">
+  <div class="q-pa-md">
     <Start v-on:load-example="onLoadExample"/>
   </div>
 </template>
