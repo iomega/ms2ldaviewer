@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Summary</router-link> |
+      <router-link to="/spectras">Fragment spectra</router-link> |
+      <router-link to="/motifs">Motifs</router-link> |
+      <router-link to="/settings">Settings</router-link> |
+      <router-link to="/pick">Pick a dataset</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
