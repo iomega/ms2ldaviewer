@@ -1,18 +1,35 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Start v-on:load-example="onLoadExample"/>
+    <Summary v-if="dataset.loaded" v-bind:dataset="dataset"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Start from '@/components/Start.vue'
+import Summary from '@/components/Summary.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    Start,
+    Summary
+  },
+  data: function() {
+    return {
+      dataset: {
+        loaded: false
+      }
+    }
+  },
+  methods: {
+    onLoadExample: function() {
+      this.dataset = {
+        loaded: true,
+        corpus: 'mycorpus'
+      }
+    }
   }
 }
 </script>
