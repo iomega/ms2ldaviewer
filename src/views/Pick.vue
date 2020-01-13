@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <Start v-on:load-example="onLoadExample"/>
+    <Start v-on:load-example="onLoadExample" v-on:load-url="onLoadUrl"/>
   </div>
 </template>
 
@@ -17,8 +17,12 @@ export default {
     Start
   },
   methods: {
-    onLoadExample: function() {
-      store.commit('loadExampleDataset')
+    onLoadExample: async function() {
+      await store.dispatch('loadExample')
+      router.push({name:'home'})
+    },
+    onLoadUrl: async function(url) {
+      await store.dispatch('loadFromUrl', url)
       router.push({name:'home'})
     }
   }

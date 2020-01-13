@@ -8,6 +8,7 @@
 // @ is an alias to /src
 import Summary from '@/components/Summary.vue'
 import { store } from '@/store';
+import { dataset } from '@/db';
 
 export default {
   name: 'home',
@@ -16,7 +17,7 @@ export default {
   },
   computed: {
     dataset: function() {
-      return store.state.dataset;
+      return dataset;
     }
   }
 }

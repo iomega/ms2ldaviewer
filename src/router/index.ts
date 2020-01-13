@@ -3,7 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Pick from '../views/Pick.vue'
 import Spectras from '../views/Spectras.vue'
+import Spectra from '../views/Spectra.vue'
 import Motifs from '../views/Motifs.vue'
+import Motif from '../views/Motif.vue'
 import Settings from '../views/Settings.vue'
 import { store } from '@/store';
 
@@ -34,9 +36,19 @@ const routes = [
     component: Spectras
   },
   {
+    path: '/spectras/:id',
+    name: 'spectra',
+    component: Spectra
+  },
+  {
     path: '/motifs',
     name: 'motifs',
     component: Motifs
+  },
+  {
+    path: '/motifs/:name',
+    name: 'motif',
+    component: Motif
   },
   {
     path: '/settings',
