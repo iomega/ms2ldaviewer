@@ -52,7 +52,7 @@ export let dataset: IDataset = {
 };
 
 export async function loadExampleDataset() {
-    return loadFromUrl('/examples/example.json');
+    return loadFromUrl(process.env.NODE_ENV === 'production' ? '/ms2ldaviewer/examples/example.json' : '/examples/example.json');
 }
 
 export async function loadFromUrl(url: string) {
