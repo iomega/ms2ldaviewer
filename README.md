@@ -1,5 +1,7 @@
 # ms2ldaviewer
 
+Browser only based viewer for [ms2lda](http://ms2lda.org/) results.
+
 ## Project setup
 ```
 npm install
