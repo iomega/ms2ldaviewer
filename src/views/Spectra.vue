@@ -7,8 +7,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { dataset } from '@/db';
+
 import Features from '@/components/Features.vue';
+import { store } from '@/store';
 
 export default Vue.extend({
     components: {
@@ -20,11 +21,11 @@ export default Vue.extend({
         },
         features() {
             const id = this.$route.params.id;
-            const document = dataset.corpus[id];
+            const document = store.state.dataset.corpus[id];
             return document;
         },
         phis() {
-            const document = dataset.phi[this.$route.params.id];
+            const document = store.state.dataset.phi[this.$route.params.id];
             return document;
         }
     }

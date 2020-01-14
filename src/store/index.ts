@@ -1,8 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { loadExampleDataset, loadFromUrl } from '@/db'
+import { loadExampleDataset, loadFromUrl, IDataset } from '@/db'
 
 Vue.use(Vuex)
+
+const emptyDataset: IDataset = {
+    K: 0,
+    doc_metadata: {},
+    corpus: {},
+    phi: {},
+    topic_metadata: {}
+}
+Object.freeze(emptyDataset);
 
 export const store = new Vuex.Store({
     state: {
@@ -11,28 +20,31 @@ export const store = new Vuex.Store({
         thresholds: {
             probability: 0.1,
             overlap: 0.2
-        }
+        },
+        dataset: emptyDataset
     },
     mutations: {
         beforeLoad(state) {
             state.loading = true
             state.loaded = false
         },
-        afterLoad(state) {
+        afterLoad(state, dataset) {
             state.loading = false
             state.loaded = true
+            Object.freeze(dataset) // Dataset is read-only, dont let vuejs watch for changes
+            state.dataset = dataset
         }
     },
     actions: {
         async loadExample({commit}) {
             commit('beforeLoad');
-            await loadExampleDataset();
-            commit('afterLoad');
+            const dataset = await loadExampleDataset();
+            commit('afterLoad', dataset);
         },
         async loadFromUrl({commit}, url) {
             commit('beforeLoad');
-            await loadFromUrl(url);
-            commit('afterLoad');
+            const dataset = await loadFromUrl(url);
+            commit('afterLoad', dataset);
         }
     }
 })

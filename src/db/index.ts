@@ -33,7 +33,7 @@ interface ITopicMetadatas {
     [key: string]: ITopicMetadata
 }
 
-interface IDataset {
+export interface IDataset {
     K: number
     doc_metadata: {
         [key:string]: IDocMetadata
@@ -57,6 +57,6 @@ export async function loadExampleDataset() {
 
 export async function loadFromUrl(url: string) {
     const response = await fetch(url);
-    dataset = await response.json();
+    const dataset: IDataset = await response.json();
     return Promise.resolve(dataset);
 }

@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {dataset} from '@/db';
 import router from '@/router';
+import { store } from '@/store';
 
 export default Vue.extend({
     name: 'spectras',
@@ -38,7 +38,7 @@ export default Vue.extend({
     },
     computed: {
         data() {
-            const docs = dataset.doc_metadata;
+            const docs = store.state.dataset.doc_metadata;
             return Object.entries(docs).map(([k, v]) => {
                 return {id: k, ...v};
             })

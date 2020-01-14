@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {dataset} from '@/db';
 import router from '@/router';
+import { store } from '@/store';
 
 export default Vue.extend({
     name: 'motifs',
@@ -32,7 +32,7 @@ export default Vue.extend({
     },
     computed: {
         data() {
-            return Object.values(dataset.topic_metadata);
+            return Object.values(store.state.dataset.topic_metadata);
         }
     },
     methods: {
