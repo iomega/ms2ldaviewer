@@ -7,6 +7,7 @@ import Spectra from '../views/Spectra.vue'
 import Motifs from '../views/Motifs.vue'
 import Motif from '../views/Motif.vue'
 import Settings from '../views/Settings.vue'
+import Feature from '../views/Feature.vue'
 import { store } from '@/store';
 
 Vue.use(VueRouter)
@@ -49,6 +50,11 @@ const routes = [
     path: '/motifs/:name',
     name: 'motif',
     component: Motif
+  },
+  {
+    path: '/features/:name',
+    name: 'feature',
+    component: Feature
   },
   {
     path: '/settings',

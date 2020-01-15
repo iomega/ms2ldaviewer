@@ -9,7 +9,10 @@ const emptyDataset: IDataset = {
     doc_metadata: {},
     corpus: {},
     phi: {},
-    topic_metadata: {}
+    topic_metadata: {},
+    beta: {},
+    theta: {},
+    overlap_scores: {}
 }
 Object.freeze(emptyDataset);
 

@@ -1,22 +1,28 @@
 <template>
     <div class="q-pa-md">
-        <h5>Spectra: {{ id }}</h5>
-        <Features v-bind:features="features" v-bind:phis="phis"/>
+        <h5>Spectra: {{ spectraid }}</h5>
+        <SpectraMeta :meta="metadata"/>
+        <MotifsOfSpectra :spectraid="spectraid"/>
+        <FeaturesOfSpectra :features="features" :phis="phis"/>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
-import Features from '@/components/Features.vue';
+import FeaturesOfSpectra from '@/components/FeaturesOfSpectra.vue';
+import SpectraMeta from '@/components/SpectraMeta.vue';
+import MotifsOfSpectra from '@/components/MotifsOfSpectra.vue';
 import { store } from '@/store';
 
 export default Vue.extend({
     components: {
-        Features
+        FeaturesOfSpectra,
+        SpectraMeta,
+        MotifsOfSpectra
     },
     computed: {
-        id() {
+        spectraid() {
             return this.$route.params.id;
         },
         features() {
@@ -25,8 +31,13 @@ export default Vue.extend({
             return document;
         },
         phis() {
-            const document = store.state.dataset.phi[this.$route.params.id];
+            const id = this.$route.params.id;
+            const document = store.state.dataset.phi[id];
             return document;
+        },
+        metadata() {
+            const id = this.$route.params.id;
+            return store.state.dataset.doc_metadata[id];
         }
     }
 })

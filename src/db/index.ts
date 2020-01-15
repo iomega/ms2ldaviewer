@@ -1,8 +1,10 @@
 
-interface IDocMetadata {
+export interface IDocMetadata {
     filename: string
     precursormass: number
     parentmass: number
+    parentintensity: number
+    scans: string
 }
 
 interface ICorpus {
@@ -24,6 +26,30 @@ interface IPhi {
     }
 }
 
+interface IBetas {
+    // Topic
+    [key: string]: {
+        // Feature
+        [key: string]: number
+    }
+}
+
+interface IThetas {
+     // Spectra aka Document
+     [key: string]: {
+        // Motif aka Topic with prob
+        [key: string]: number
+    }
+}
+
+interface IOverlapScores {
+    // Spectra aka Document
+    [key: string]: {
+       // Motif aka Topic with overlap score
+       [key: string]: number
+   }
+}
+
 interface ITopicMetadata {
     name: string
     type: string
@@ -41,6 +67,9 @@ export interface IDataset {
     corpus: ICorpus
     phi: IPhi
     topic_metadata: ITopicMetadatas
+    beta: IBetas
+    theta: IThetas
+    overlap_scores: IOverlapScores
 }
 
 export let dataset: IDataset = {
@@ -48,7 +77,10 @@ export let dataset: IDataset = {
     doc_metadata: {},
     corpus: {},
     phi: {},
-    topic_metadata: {}
+    topic_metadata: {},
+    beta: {},
+    theta: {},
+    overlap_scores: {},
 };
 
 export async function loadExampleDataset() {
