@@ -18,7 +18,7 @@ export default Vue.extend({
                 name: 'name',
                 label: 'Name',
                 sortable: true,
-                field: 'filename'
+                field: 'name'
             }, {
                 name: 'precursormass',
                 field: 'precursormass',
@@ -40,7 +40,7 @@ export default Vue.extend({
         data() {
             const docs = store.state.dataset.doc_metadata;
             return Object.entries(docs).map(([k, v]) => {
-                return {id: k, ...v};
+                return {id: k, ...v, name: `${v.filename}:${v.scans}`};
             })
         }
     },
