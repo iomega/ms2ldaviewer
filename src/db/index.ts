@@ -59,6 +59,10 @@ interface ITopicMetadatas {
     [key: string]: ITopicMetadata
 }
 
+interface IFeatures {
+    [key: string]: [number, number]
+}
+
 export interface IDataset {
     K: number
     doc_metadata: {
@@ -70,6 +74,7 @@ export interface IDataset {
     beta: IBetas
     theta: IThetas
     overlap_scores: IOverlapScores
+    features: IFeatures
 }
 
 export let dataset: IDataset = {
@@ -81,6 +86,7 @@ export let dataset: IDataset = {
     beta: {},
     theta: {},
     overlap_scores: {},
+    features: {},
 };
 
 export async function loadExampleDataset() {

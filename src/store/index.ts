@@ -17,7 +17,8 @@ const emptyDataset: IDataset = {
     topic_metadata: {},
     beta: {},
     theta: {},
-    overlap_scores: {}
+    overlap_scores: {},
+    features: {}
 }
 Object.freeze(emptyDataset);
 
