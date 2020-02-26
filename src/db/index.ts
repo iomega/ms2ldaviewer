@@ -90,5 +90,30 @@ export async function loadExampleDataset() {
 export async function loadFromUrl(url: string) {
     const response = await fetch(url);
     const dataset: IDataset = await response.json();
-    return Promise.resolve(dataset);
+    return dataset;
+}
+
+const readUploadedFileAsText = (inputFile: File): Promise<string> => {
+    const reader = new FileReader();
+  
+    return new Promise((resolve, reject) => {
+      reader.onerror = () => {
+        reader.abort();
+        reject(new DOMException("Problem parsing input file."));
+      };
+  
+      reader.onload = () => {
+          if (reader.result) {
+            resolve(reader.result as string);
+          } else {
+            reject(new DOMException("Problem parsing input file."));
+          }
+      };
+      reader.readAsText(inputFile);
+    });
+  };
+
+export async function loadFromFile(file: File) {
+    const body = await readUploadedFileAsText(file);
+    return JSON.parse(body);
 }

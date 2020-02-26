@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <button v-on:click="$emit('load-example')">Load example</button>
+    <div class="q-pa-md q-gutter-sm">
+        <q-btn v-on:click="$emit('load-example')" label="Load example" flat/>
         <div>Or</div>
-        <button disabled>Upload JSON document</button>
+        <q-file v-on:input="loadFile" label="Upload JSON document" accept=".json, application/json"/>
         <div>Or</div>
         <q-input label="Load from URL" v-model="url" v-on:keyup.enter="loadUrl"/>
     </div>
@@ -14,12 +14,16 @@ export default Vue.extend({
     name: 'Start',
     data() {
         return {
-            url: ''
+            url: '',
+            file: null
         };
     },
     methods: {
         loadUrl: function() {
             this.$emit('load-url', this.url)
+        },
+        loadFile: function(value: any) {
+            this.$emit('load-file', value);
         }
     }
 })
